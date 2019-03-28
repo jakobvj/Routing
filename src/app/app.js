@@ -49,9 +49,15 @@ const View = {
   template: `<component :is="currentView"></component>`,
   data(){
     return{
-      currentView: DunkirkBlurb
+      currentView: {}
     }
-  }
+  },
+
+created(){
+  this.currentView = routes.find(
+    route => route.path === windows.location.pathname
+  ).component;
+}
 };
 
 const App = {
